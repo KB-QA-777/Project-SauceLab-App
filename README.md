@@ -1,68 +1,117 @@
-#### Install Appium Server
-```
-npm install -g appium               [ install appium CLI version ]
-npm install -g appium-doctor        [ install appium doctor ]
-appium --version                    [ To check appium version ]
-```
+# Mobile Testing Project
 
-#### Verify drivers
-```
-appium driver list                  [ To check available drivers ]
-appium driver install uiautomator2  [ install android driver]
-appium driver install xcuitest      [ install ios driver]
-```
+This project is set up for mobile application testing using WebdriverIO, Appium, and Cucumber. It's configured for Android testing with support for Allure reporting.
 
-#### Setup Android SDK path environment variable
-```
-- ANDROID_HOME = <path to Sdk folder>
-- %ANDROID_HOME%\tools [path variable]
-- %ANDROID_HOME%\tools\bin  [path variable]
-- %ANDROID_HOME%\platform-tools  [path variable]
-```
+## Prerequisites
 
-#### Setup/Create virtual device on Android studio:
-```
-1] Open Android Studio
-2] Click on More Actions 
-   --> AVD Manager 
-   --> Create Virtual Device 
-   --> Select the device and OS version [ Refer Device Configurations ] 
-   --> Finish
-3] Once Virtual device is created, click on Launch this AVD in the emulator.
-4] Command to view the list of devices attached `adb devices`
+- Node.js and npm
+- Android SDK
+- Appium
+- Java Development Kit (JDK)
+
+## Setup
+
+### 1. Install Appium Server
+
+```bash
+npm install -g appium
+npm install -g appium-doctor
+appium --version
 ```
 
-Device Configurations:
+### 2. Verify and Install Drivers
+
+```bash
+appium driver list
+appium driver install uiautomator2
+appium driver install xcuitest
 ```
-Device 1: Pixel 3 - version 11
+
+### 3. Setup Android SDK Path
+
+Set the following environment variables:
+
+- `ANDROID_HOME = <path to Sdk folder>`
+- Add to PATH:
+  - `%ANDROID_HOME%\tools`
+  - `%ANDROID_HOME%\tools\bin`
+  - `%ANDROID_HOME%\platform-tools`
+
+### 4. Create Virtual Device (Android Studio)
+
+1. Open Android Studio
+2. Click on More Actions -> AVD Manager -> Create Virtual Device
+3. Select the device (e.g., Pixel 3) and OS version (e.g., Android 11)
+4. Launch the AVD in the emulator
+5. Verify with `adb devices`
+
+### 5. Verify Setup
+
+```bash
+appium-doctor --android
 ```
 
+Ensure all checks pass (green).
 
-#### Verify all setup
+## Project Structure
+
+- `app/android/`: Android .apk file
+- `config/`: WebdriverIO and capabilities configurations
+- `features/`: Cucumber feature files
+- `pages/`: Page Object Model (POM) classes
+- `static/`: Constants and path constants
+- `stepDefinitions/`: Cucumber step definitions
+- `test-results/`: Test results and reports
+
+## Installation
+
+Clone the repository and install dependencies:
+
+```bash
+git clone <repository-url>
+cd <project-directory>
+npm install
 ```
-appium-doctor --android        [ To check Android set up ]
-appium-doctor --ios            [ To check ios set up ]
+
+## Running Tests
+
+To run the tests:
+
+```bash
+npm test
 ```
-all options should be green checked as shown in below image to start.
-![android_config.png](sample/android_config.png)
 
+This command will execute the WebdriverIO tests using Cucumber.
 
+## Generating Reports
 
-##### Allure
+To generate and view the Allure report:
 
-The Allure Reporter creates [Allure](https://docs.qameta.io/allure/) test reports which is an HTML generated website with all necessary information to debug your test results and take a look on error screenshots. Add allure to the reporters array in config file and define the output directory of the allure reports.
+```bash
+npm run allure-report
+```
 
-To generate and view an Allure report inside your corp network or locally, run `npm run allure-report`. The Allure report is hosted on a `web server` and can be accessed through http://YourMachineIP:5050/ and also generated locally which can be found at `./allure-report/index.html`.
+The report will be available at `http://YourMachineIP:5050/` and locally at `./allure-report/index.html`.
 
-Project Structure
-   app/android/: Contains the Android .apk file.
-   config/: Configuration files for WebdriverIO and capabilities.
-   features/: Cucumber feature files.
-   pages/: Page Object Model (POM) classes.
-   static/: Constants and path constants.
-   stepDefinitions/: Cucumber step definitions.
-   test-results/: Directory for test results and reports.
-Scripts
-   npm test: Runs the tests using WebdriverIO and Cucumber.
-   npm run allure-report: Generates the Allure report from test results.
-   npm run allure.history: Prepares history for Allure report.
+## Configuration
+
+- `wdio.conf.bdd.ts`: WebdriverIO configuration file
+- `tsconfig.json`: TypeScript configuration
+- `capabilities.ts`: Device capabilities for testing
+
+## Key Files
+
+- `constants.ts`: Application constants
+- `pathconstants.ts`: File path constants
+- `login.ts`: Login step definitions
+- `base.page.ts`: Base page object with common functions
+- `login.page.ts`: Login page object
+
+## Scripts
+
+- `npm test`: Run tests
+- `npm run allure-report`: Generate Allure report
+- `npm run allure:history`: Prepare history for Allure report
+
+## Test Execution Recording
+The project includes a video recording (Recording #1.mp4) that demonstrates the execution of test cases.

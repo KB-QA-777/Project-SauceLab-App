@@ -1,6 +1,6 @@
 # Mobile Testing Project
 
-This project is set up for mobile application testing using WebdriverIO, Appium, and Cucumber. It's configured for Android testing with support for Allure reporting.
+This project is set up for mobile application testing using WebdriverIO, Appium, and Cucumber. It's configured for Android and IOS Automation testing with support for Allure reporting.
 
 ## Prerequisites
 

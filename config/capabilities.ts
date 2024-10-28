@@ -1,15 +1,14 @@
-import { ANDROID_APP_PATH } from "../static/pathconstants";
+// config/capabilities.ts
+import path from 'path';
 
-export const androidDeviceCapabilities = [
-    {
-        platformName: "Android",
-        "appium:platformVersion": "11",
-        "appium:deviceName": "emulator-5554",
-        "appium:automationName": "Uiautomator2",
-        "appium:app": ANDROID_APP_PATH,
-        'appium:noReset': false,
-        'appium:newCommandTimeout': 30,
-        "appium:autoGrantPermissions": true,
-        "appium:avdLaunchTimeout": 180000
-    }
-]
+export const androidDeviceCapabilities = [{
+    platformName: 'Android',
+    maxInstances: 1,
+    'appium:deviceName': 'emulator-5554',
+    'appium:platformVersion': '11',
+    'appium:automationName': 'UiAutomator2',
+    'appium:app': path.join(process.cwd(), './app/android/Android-MyDemoAppRN.1.3.0.build-244.apk'),
+    'appium:autoGrantPermissions': true,
+    'appium:noReset': false,
+    'appium:newCommandTimeout': 240
+}];

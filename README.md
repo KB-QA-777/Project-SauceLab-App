@@ -1,5 +1,6 @@
 # Mobile Test Automation Framework
 
+
 This is a mobile test automation framework built using WebdriverIO, Appium, and Cucumber for testing Android applications. The framework follows the Page Object Model design pattern and includes Allure reporting.
 
 ## Tech Stack
@@ -9,6 +10,7 @@ This is a mobile test automation framework built using WebdriverIO, Appium, and 
 - **Cucumber**: v8.39.0 - BDD framework
 - **TypeScript**: v5.3.3 - Programming language
 - **Allure**: v2.29.0 - Reporting
+
 
 ## Prerequisites
 
